@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="01" author="Mondher">
+
+        <comment>Creating tables</comment>
+
+        <createTable tableName="pet" remarks="A table to contain all pets">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(50)">
+            </column>
+            <column name="category" type="VARCHAR(50)">
+            </column>
+            <column name="entry_date" type="date">
+            </column>
+            <column name="weight" type="Float">
+            </column>
+            <column name="customer" type="BIGINT">
+            </column>
+        </createTable>
+
+        <createTable tableName="customer" remarks="A table to contain all customers">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="firstname" type="VARCHAR(50)">
+            </column>
+            <column name="lastname" type="VARCHAR(50)">
+            </column>
+            <column name="phone_number" type="VARCHAR(50)">
+            </column>
+            <column name="mail" type="VARCHAR(50)">
+            </column>
+            <column name="id_number" type="VARCHAR(50)">
+            </column>
+        </createTable>
+
+        <createTable tableName="treatment" remarks="A table to contain all treatments">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="status" type="VARCHAR(50)">
+            </column>
+            <column name="type" type="VARCHAR(50)">
+            </column>
+            <column name="date" type="date">
+            </column>
+            <column name="price" type="Float">
+            </column>
+        </createTable>
+
+        <createTable tableName="pet_treatments" remarks="A table to contain all pets treatments">
+            <column name="id" type="BIGINT" autoIncrement="true">
+                <constraints nullable="false" unique="true" primaryKey="true"/>
+            </column>
+            <column name="pet_id" type="BigInt">
+            </column>
+            <column name="treatment_id" type="BigInt">
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="pet" baseColumnNames="customer"
+                                 constraintName="fk_customer_pet" referencedTableName="customer"
+                                 referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint baseTableName="pet_treatments" baseColumnNames="pet_id"
+                                 constraintName="fk_pet_treatment_id" referencedTableName="pet"
+                                 referencedColumnNames="id"/>
+
+        <addForeignKeyConstraint baseTableName="pet_treatments" baseColumnNames="treatment_id"
+                                 constraintName="fk_treatment_pet_id" referencedTableName="treatment"
+                                 referencedColumnNames="id"/>
+
+    </changeSet>
+
+</databaseChangeLog>
+

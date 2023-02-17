@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/config-server" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/easy-ms-sdk" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/my-veterinary-ms" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/veterinary-domain" vcs="Git" />
+  </component>
+</project>

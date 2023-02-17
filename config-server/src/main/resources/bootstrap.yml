@@ -1,0 +1,17 @@
+#Server port
+server:
+  port: 2001
+
+#Git repo location.
+spring:
+  profiles:
+    active: dev
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitlab.com/veterinary1/config-repo.git
+          default-label: main
+          username: veterinary-config-repo
+          password: osrj6brNyxnwaWWgQtc_
+          clone-on-start: true

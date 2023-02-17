@@ -1,0 +1,7 @@
+package com.veterinary.repository;
+
+import com.veterinary.model.Pet;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PetRepository extends JpaRepository<Pet, Long> {
+}

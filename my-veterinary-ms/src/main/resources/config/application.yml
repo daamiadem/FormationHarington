@@ -1,0 +1,47 @@
+server:
+  port: 8092
+
+#Admin configuration
+info:
+  name: @app.id@
+  description: @app.id@
+  version: @pom.version@
+  stage: local
+
+spring:
+  application:
+    id: @app.id@
+    name: @app.id@
+  jpa:
+    properties:
+      hibernate:
+        default_schema: ${datasource.db.schema}
+        temp:
+          use_jdbc_metadata_defaults: false
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: ${datasource.url}
+    username: ${datasource.username}
+    password: ${datasource.password}
+    driver-class-name: org.postgresql.Driver
+  liquibase:
+    default-schema: veterinary
+    change-log: classpath:config/db/db.changelog-master.xml
+    contexts: postgres
+  profiles.active: local
+  boot:
+    admin:
+      client:
+        url: ${boot.admin.client.url}
+        username: ${boot.admin.client.username}
+        password: ${boot.admin.client.password}
+
+
+
+management.endpoints.web.exposure.include: "*"
+management.security.enabled: false
+
+oauth2.ms.url: http://localhost:2000

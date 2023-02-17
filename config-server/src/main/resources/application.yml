@@ -1,0 +1,25 @@
+#Admin configuration
+info:
+  name: @app.id@
+  description: @app.id@
+  version: @pom.version@
+  stage: local
+
+spring:
+  application:
+    id: @app.id@
+    name: @app.id@
+  boot:
+    admin:
+      client:
+        url: http://localhost:2003
+        username: admin
+        password: admin
+
+easyms:
+  logging:
+    logstash: # Forward logs to logstash over a socket, used by LoggingConfig
+      enabled: false
+      host: "localhost"
+      port: 5000
+      queue-size: 512

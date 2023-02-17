@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="02-customer-data" author="mondher">
+
+        <comment>Inserting customers</comment>
+        <insert tableName="customer">
+            <column name="id" value="1" type="BIGINT">
+            </column>
+            <column name="firstname" value="john">
+            </column>
+            <column name="lastname" value="doe">
+            </column>
+            <column name="id_number" value="01010101">
+            </column>
+            <column name="phone_number" value="+21621212121">
+            </column>
+            <column name="mail" value="john.doe@yopmail.com">
+            </column>
+        </insert>
+
+        <insert tableName="customer">
+            <column name="id" value="2" type="BIGINT">
+            </column>
+            <column name="firstname" value="jane">
+            </column>
+            <column name="lastname" value="doe">
+            </column>
+            <column name="id_number" value="01010101">
+            </column>
+            <column name="phone_number" value="+21621212121">
+            </column>
+            <column name="mail" value="jane.doe@yopmail.com">
+            </column>
+        </insert>
+    </changeSet>
+
+    <changeSet id="02-treatment-data" author="mondher">
+
+        <comment>Inserting treatments</comment>
+        <insert tableName="treatment">
+            <column name="id" value="1" type="BIGINT">
+            </column>
+            <column name="price" value="50">
+            </column>
+            <column name="type" value="grooming">
+            </column>
+        </insert>
+
+        <insert tableName="treatment">
+            <column name="id" value="2" type="BIGINT">
+            </column>
+            <column name="price" value="20">
+            </column>
+            <column name="type" value="flea vaccine">
+            </column>
+        </insert>
+    </changeSet>
+
+    <changeSet id="02-pet-data" author="mondher">
+
+        <comment>Inserting pets</comment>
+        <insert tableName="pet">
+            <column name="id" value="1" type="BIGINT">
+            </column>
+            <column name="name" value="jack">
+            </column>
+            <column name="category" value="dog">
+            </column>
+            <column name="entry_date" value="2022-01-01">
+            </column>
+            <column name="customer" value="1">
+            </column>
+            <column name="weight" value="8">
+            </column>
+        </insert>
+
+        <insert tableName="pet">
+            <column name="id" value="2" type="BIGINT">
+            </column>
+            <column name="name" value="kikou">
+            </column>
+            <column name="category" value="cat">
+            </column>
+            <column name="entry_date" value="2022-01-01">
+            </column>
+            <column name="customer" value="1">
+            </column>
+            <column name="weight" value="8">
+            </column>
+        </insert>
+    </changeSet>
+
+
+    <changeSet id="02-pet-treatment-data" author="mondher">
+
+        <comment>Inserting pet treatments</comment>
+        <insert tableName="pet_treatments">
+            <column name="id" value="1" type="BIGINT">
+            </column>
+            <column name="pet_id" value="1">
+            </column>
+            <column name="treatment_id" value="1">
+            </column>
+        </insert>
+
+        <insert tableName="pet_treatments">
+            <column name="id" value="2" type="BIGINT">
+            </column>
+            <column name="pet_id" value="2">
+            </column>
+            <column name="treatment_id" value="2">
+            </column>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>

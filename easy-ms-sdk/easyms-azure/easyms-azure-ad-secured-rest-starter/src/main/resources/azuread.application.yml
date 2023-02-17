@@ -1,0 +1,53 @@
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          azure:
+            jwk-set-uri: https://login.microsoftonline.com/${easyms.azure.activedirectory.tenant}/discovery/keys
+    user:
+      name: ${easyms.security.actuator.user:actuator-admin}
+      password: ${easyms.security.actuator.password}
+      roles: ACTUATOR
+
+swagger:
+  paths: /api.*
+  securityDefinitions:
+    oauthSecurity:
+      type: oauth2
+      tokenUrl: https://login.microsoftonline.com/${easyms.azure.activedirectory.tenant}/oauth2/v2.0/token
+      tokenRequestUrl: https://login.microsoftonline.com/${easyms.azure.activedirectory.tenant}/oauth2/v2.0/authorize
+      clientId: ${easyms.azure.activedirectory.swaggerclientId}
+      scopes: ${easyms.azure.activedirectory.swaggerscopes}
+
+easyms:
+  secured:
+    azuread :
+      enabled: true
+      internaltoken:
+        enabled: ${easyms.azure.internalToken.enabled:false}
+        pubKeyPath : ${easyms.azure.internalToken.pubKeyPath:}
+        pubKeyValue : ${easyms.azure.internalToken.pubKeyValue:}
+        issuer : ${easyms.azure.internalToken.issuer}
+
+azure:
+  activedirectory:
+    jwtConnectTimeout: 3000
+    jwtReadTimeout: 3000
+    session-stateless: true
+    client-id: ${easyms.azure.activedirectory.clientId}
+    appIdUri: ${easyms.azure.activedirectory.appIdUri}
+
+---
+spring:
+  profiles: test
+
+easyms:
+  azure:
+    activedirectory:
+      tenant: fakeTenant
+      clientId: fakeClientId
+      appIdUri : fakeAppIdUri
+      swaggerclientId: fakeSwaggerClientId
+      swaggerscopes: fakeSwaggerScopes
+
